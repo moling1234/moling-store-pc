@@ -10,7 +10,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-text">
-        Search Text
+        Search Text --watch
         <img src={ imgJpg } alt=""/>
         <img src={ clearPng } alt=""/>
       </div>
