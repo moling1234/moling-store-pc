@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"helloWord\", function() { return helloWord; });\nconst helloWord = () => {\n  return 'hello moling'\n}\n\n\n\n\n//# sourceURL=webpack:///./src/components/helloWord.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"helloWord\", function() { return helloWord; });\nvar helloWord = function helloWord() {\n  return 'hello moling';\n};\n\n\n\n//# sourceURL=webpack:///./src/components/helloWord.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_helloWord__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/helloWord */ \"./src/components/helloWord.js\");\n\n\ndocument.write(Object(_components_helloWord__WEBPACK_IMPORTED_MODULE_0__[\"helloWord\"])())\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_helloWord__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/helloWord */ \"./src/components/helloWord.js\");\n\ndocument.write(Object(_components_helloWord__WEBPACK_IMPORTED_MODULE_0__[\"helloWord\"])());\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
