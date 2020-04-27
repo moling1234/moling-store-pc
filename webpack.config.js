@@ -1,7 +1,8 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
+const HtmlwebpackPlugin = require('html-webpack-plugin');
+// const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -50,10 +51,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new HtmlwebpackPlugin({
+      title: 'moling',
+      template: './public/index.html'
+    }),
+    // new webpack.HotModuleReplacementPlugin()
   ],
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  }
+  // devServer: {
+  //   contentBase: './dist',
+  //   hot: true
+  // }
 }
