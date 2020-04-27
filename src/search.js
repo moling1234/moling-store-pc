@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOm from 'react-dom';
+import './search.css';
 
 class Search extends React.Component {
   render() {
     return (
-      <div>
+      <div className="search-text">
         Search Text
       </div>
     )
