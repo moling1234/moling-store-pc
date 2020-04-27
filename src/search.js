@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOm from 'react-dom';
+
+import imgJpg from './assets/images/img.jpg'
+import clearPng from './assets/icons/clear.png'
+
 import './search.less';
 
 class Search extends React.Component {
@@ -7,6 +11,8 @@ class Search extends React.Component {
     return (
       <div className="search-text">
         Search Text
+        <img src={ imgJpg } alt=""/>
+        <img src={ clearPng } alt=""/>
       </div>
     )
   }
