@@ -2,17 +2,19 @@
 
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
-    main: './src/main.js',
-    search: './src/search.js'
+    index: path.resolve(__dirname, './src/index.js'),
+    search: path.resolve(__dirname, './src/search.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: 'js/[name].[hash:8].js'
   },
   module: {
     rules: [
@@ -21,17 +23,16 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.(c|le)ss$/,
         use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './'
+            }
+          },
           'css-loader',
+          'postcss-loader',
           'less-loader'
         ]
       },
@@ -40,25 +41,72 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            limit: 10240
+            esModule: false,
+            limit: 10240,
+            outputPath: 'static/images',
+            publicPath: 'static/images/',
+            name: '[name].[hash:8].[ext]'
           }
         }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'file-loader'
+        use: {
+          loader: 'file-loader',
+          options: {
+            esModule: false,
+            limit: 10240,
+            outputPath: 'static/fonts',
+            publicPath: 'static/fonts/',
+            name: '[name].[hash:8].[ext]'
+          }
+        }
       }
     ]
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'moling',
-      template: './public/index.html'
+      template: path.resolve(__dirname, './public/index.html'),
+      title: 'index',
+      filename: 'index.html',
+      chunks: ['index'],
+      inject: true,
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: false,
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: false
+      }
     }),
-    // new webpack.HotModuleReplacementPlugin()
+    new HtmlwebpackPlugin({
+      template: path.resolve(__dirname, './public/index.html'),
+      title: 'search',
+      filename: 'search.html',
+      chunks: ['search'],
+      inject: true,
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: false,
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: false
+      }
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css'
+    }),
+    new OptimizeCssAssetsWebpackPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano')
+    }),
+    new CleanWebpackPlugin()
   ],
-  // devServer: {
-  //   contentBase: './dist',
-  //   hot: true
-  // }
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    port: 3003
+  }
 }

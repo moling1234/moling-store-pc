@@ -3,26 +3,36 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "node ./server/index.js",
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "browserslist": [
+    "last 2 version",
+    ">0.2%",
+    "iOS 7",
+    "ie >= 8"
+  ],
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
+    "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
+    "cssnano": "^4.1.10",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.2.0",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
     "style-loader": "^1.2.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
