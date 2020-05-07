@@ -33,7 +33,14 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
-          'less-loader'
+          'less-loader',
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 100,
+              remPrecision: 8
+            }
+          }
         ]
       },
       {

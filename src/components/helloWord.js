@@ -1,6 +1,4 @@
-const helloWord = () => {
-  return 'hello moling'
-}
+const helloWord = 'hello moling11';
 
 export {
   helloWord
